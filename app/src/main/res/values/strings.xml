@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BookListing</string>
+    <string name="no_book_found">THERE IS NO SUCH A BOOK</string>
+</resources>
