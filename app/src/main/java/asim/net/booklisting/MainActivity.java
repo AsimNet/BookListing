@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @OnClick(R.id.searchButton)
     public void submit(){
+        noBookFoundFrame.setVisibility(View.GONE);
 
 
 
@@ -74,10 +74,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
             if (getLoaderManager().getLoader(1) !=null){
                 getLoaderManager().restartLoader(1,null,this);
-                Toast.makeText(this, "restartLoader", Toast.LENGTH_SHORT).show();
 
             }else{
-                Toast.makeText(this, "initLoader", Toast.LENGTH_SHORT).show();
                 getLoaderManager().initLoader(1,null,this);
 
             }
@@ -87,8 +85,9 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             // First, hide loading indicator so error message will be visible
             loadingIndicator.setVisibility(View.GONE);
 
+            noBookFoundFrame.setVisibility(View.VISIBLE);
             // Update empty state with no connection error message
-            noBookFoundView.setText(R.string.no_book_found);
+            noBookFoundView.setText(R.string.no_internet);
         }
 
     }
